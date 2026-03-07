@@ -7,7 +7,9 @@ import { DispatchSummaryRecord } from '@/types/dispatch';
 import { createAppSheetClient } from './appsheet-client';
 
 if (!process.env.APPSHEET_DISPATCH_API_URL || !process.env.APPSHEET_API_KEY) {
-  throw new Error('Missing required env vars: APPSHEET_DISPATCH_API_URL, APPSHEET_API_KEY');
+  if (process.env.NODE_ENV === 'production' && process.env.npm_lifecycle_event !== 'build') {
+    console.error('Missing required env vars: APPSHEET_DISPATCH_API_URL, APPSHEET_API_KEY');
+  }
 }
 
 const client = createAppSheetClient<DispatchSummaryRecord>(
