@@ -1,0 +1,39 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Order status enum as string (SQLite doesn't support native enums)
+// Status flow: Payment Confirmed -> Material In Process -> Loading Point -> Loading Done -> Documents Ready -> Balance Confirmed -> Dispatched
+// Special statuses: Hold, Cancel
+
+model Order {
+  id          String   @id @default(cuid())
+  orderId     String   @unique // User-friendly order ID like "ORD-001"
+  companyName String
+  product     String
+  quantity    Int
+  status      String   @default("Payment Confirmed")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([status])
+  @@index([companyName])
+}
+
+model Manager {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String   // Hashed password
+  name      String
+  role      String   @default("manager")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
