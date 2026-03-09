@@ -118,9 +118,9 @@ export function QcDetailModal({ record, isOpen, onClose, onEdit }: QcDetailModal
 
     return (
         <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
-            <DialogContent className="max-w-[95vw] lg:max-w-5xl w-full h-[90vh] flex flex-col p-0 overflow-hidden rounded-[20px] shadow-2xl border-muted/50 gap-0 bg-background">
+            <DialogContent className="max-w-[95vw] lg:max-w-5xl w-full h-[100dvh] sm:h-[90vh] flex flex-col p-0 overflow-hidden rounded-none sm:rounded-[20px] shadow-2xl border-muted/50 gap-0 bg-background">
                 {/* Header */}
-                <DialogHeader className="px-4 lg:px-8 py-3 lg:py-5 border-b bg-background relative shrink-0 z-10">
+                <DialogHeader className="px-4 lg:px-8 py-3 lg:py-4 border-b bg-background relative shrink-0 z-10">
                     <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 to-teal-400" />
                     <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-6 relative z-10 w-full">
                         <div className="space-y-2 lg:space-y-3">
@@ -158,7 +158,7 @@ export function QcDetailModal({ record, isOpen, onClose, onEdit }: QcDetailModal
 
                 {/* Main Content */}
                 <div className="flex-1 overflow-y-auto bg-background relative slim-scrollbar">
-                    <div className="p-4 lg:p-8">
+                    <div className="p-3 sm:p-4 lg:p-8">
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 mb-6">
                             {/* Inspection Checks */}
@@ -239,12 +239,12 @@ export function QcDetailModal({ record, isOpen, onClose, onEdit }: QcDetailModal
                     </div>
                 </div>
 
-                <div className="shrink-0 border-t bg-background px-6 lg:px-8 py-4 flex items-center justify-between z-40">
+                <div className="shrink-0 border-t bg-background px-4 sm:px-6 lg:px-8 py-3 sm:py-4 flex items-center justify-between z-40 pb-safe">
                     {onEdit ? (
                         <Button
                             variant="outline"
                             onClick={() => { onClose(); onEdit(record); }}
-                            className="rounded-xl px-5 gap-2 border-emerald-200 text-emerald-700 hover:bg-emerald-50"
+                            className="rounded-xl px-4 sm:px-5 gap-2 border-emerald-200 text-emerald-700 hover:bg-emerald-50 text-sm"
                         >
                             <Pencil className="h-4 w-4" />
                             Edit Record

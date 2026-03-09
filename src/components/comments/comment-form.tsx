@@ -150,7 +150,7 @@ export function CommentForm({ isOpen, onClose, onSubmit, isSubmitting, initialOr
 
     return (
         <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
-            <DialogContent className="max-w-3xl w-full p-0 overflow-hidden rounded-2xl shadow-2xl border-muted/50 gap-0">
+            <DialogContent className="max-w-3xl w-full p-0 overflow-hidden sm:rounded-2xl rounded-none sm:h-auto h-[100dvh] shadow-2xl border-muted/50 gap-0">
                 <DialogHeader className="px-6 py-3 border-b bg-background relative shrink-0">
                     <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-cyan-400" />
                     <div className="flex items-center gap-3">
@@ -161,9 +161,9 @@ export function CommentForm({ isOpen, onClose, onSubmit, isSubmitting, initialOr
                     </div>
                 </DialogHeader>
 
-                <form onSubmit={handleSubmit} className="p-5 space-y-3">
+                <form onSubmit={handleSubmit} className="p-4 sm:p-5 space-y-3 sm:space-y-4 overflow-y-auto">
                     {/* Row 1: Order ID + Party Name + Email */}
-                    <div className="grid grid-cols-3 gap-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
                         <div className="space-y-1" ref={dropdownRef}>
                             <Label className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Order ID *</Label>
                             {orderId ? (
@@ -203,7 +203,7 @@ export function CommentForm({ isOpen, onClose, onSubmit, isSubmitting, initialOr
                     </div>
 
                     {/* Row 2: Status + Amounts side by side */}
-                    <div className="grid grid-cols-2 gap-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {/* Status */}
                         <div className="space-y-1">
                             <Label className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Status</Label>
@@ -227,7 +227,7 @@ export function CommentForm({ isOpen, onClose, onSubmit, isSubmitting, initialOr
                         </div>
 
                         {/* Balance + Carry Forward + Amount */}
-                        <div className="grid grid-cols-3 gap-2">
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3">
                             <div className="space-y-1">
                                 <Label className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Balance Left</Label>
                                 <Input value={balanceLeft} onChange={(e) => setBalanceLeft(e.target.value)} placeholder="₹0" className="h-9 text-sm rounded-lg" />
@@ -246,11 +246,11 @@ export function CommentForm({ isOpen, onClose, onSubmit, isSubmitting, initialOr
                     {/* Row 3: Comments */}
                     <div className="space-y-1">
                         <Label className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Comment *</Label>
-                        <Textarea value={comments} onChange={(e) => setComments(e.target.value)} placeholder="Write your comment here..." rows={2} className="rounded-lg resize-none text-sm" />
+                        <Textarea value={comments} onChange={(e) => setComments(e.target.value)} placeholder="Write your comment here..." rows={3} className="rounded-lg resize-none text-sm" />
                     </div>
 
                     {/* Actions */}
-                    <div className="flex justify-end gap-2 pt-1">
+                    <div className="flex justify-end gap-2 pt-2 pb-4 sm:pb-0">
                         <Button type="button" variant="outline" onClick={onClose} className="rounded-xl px-5 h-9">Cancel</Button>
                         <Button
                             type="submit"

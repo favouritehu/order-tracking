@@ -277,7 +277,7 @@ export function OrderDetailsModal({ order, isOpen, onClose }: OrderDetailsModalP
         <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
             <DialogContent
                 aria-describedby="order-details-description"
-                className="max-w-[95vw] lg:max-w-7xl w-full h-[95vh] flex flex-col p-0 overflow-hidden rounded-[20px] shadow-2xl border-muted/50 gap-0 bg-background"
+                className="max-w-[95vw] lg:max-w-7xl w-full h-[100dvh] sm:h-[95vh] flex flex-col p-0 overflow-hidden sm:rounded-[20px] rounded-none shadow-2xl border-muted/50 gap-0 bg-background"
             >
                 {/* Hidden description for accessibility */}
                 <span id="order-details-description" className="sr-only">

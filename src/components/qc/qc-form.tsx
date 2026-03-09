@@ -273,8 +273,8 @@ export function QcForm({ isOpen, onClose, orderId: propOrderId, partyName: propP
 
     return (
         <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
-            <DialogContent className="max-w-[95vw] lg:max-w-3xl w-full max-h-[90vh] flex flex-col p-0 overflow-hidden rounded-[20px] shadow-2xl border-muted/50 gap-0">
-                <DialogHeader className="px-6 py-4 border-b bg-background relative shrink-0">
+            <DialogContent className="max-w-[95vw] lg:max-w-3xl w-full max-h-[100dvh] sm:max-h-[90vh] flex flex-col p-0 overflow-hidden rounded-none sm:rounded-[20px] shadow-2xl border-muted/50 gap-0">
+                <DialogHeader className="px-4 sm:px-6 py-3 sm:py-4 border-b bg-background relative shrink-0">
                     <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 to-teal-400" />
                     <div className="flex items-center gap-3">
                         <div className="p-2 rounded-xl bg-emerald-500/10 text-emerald-600">
@@ -287,7 +287,7 @@ export function QcForm({ isOpen, onClose, orderId: propOrderId, partyName: propP
                 </DialogHeader>
 
                 <form onSubmit={handleSubmit} className="flex-1 overflow-y-auto slim-scrollbar">
-                    <div className="p-6 space-y-6">
+                    <div className="p-4 sm:p-6 space-y-5 sm:space-y-6">
                         {/* Order Info */}
                         {isStandalone ? (
                             /* Standalone mode: Order search */

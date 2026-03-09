@@ -99,7 +99,7 @@ export function UbDetailModal({ record, isOpen, onClose, onEdit }: UbDetailModal
 
     return (
         <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
-            <DialogContent className="max-w-[95vw] lg:max-w-5xl w-full h-[90vh] flex flex-col p-0 overflow-hidden rounded-[20px] shadow-2xl border-muted/50 gap-0 bg-background">
+            <DialogContent className="max-w-[95vw] lg:max-w-5xl w-full h-[100dvh] sm:h-[90vh] flex flex-col p-0 overflow-hidden sm:rounded-[20px] rounded-none shadow-2xl border-muted/50 gap-0 bg-background">
                 {/* Header */}
                 <DialogHeader className="px-4 lg:px-8 py-3 lg:py-5 border-b bg-background relative shrink-0 z-10">
                     <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-500 to-orange-400" />

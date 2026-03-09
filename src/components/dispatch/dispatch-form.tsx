@@ -178,8 +178,8 @@ export function DispatchForm({ isOpen, onClose, onSubmit, isSubmitting, editReco
 
     return (
         <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
-            <DialogContent className="max-w-5xl w-full p-0 overflow-hidden rounded-2xl shadow-2xl border-muted/50 gap-0">
-                <DialogHeader className="px-6 py-3 border-b bg-background relative shrink-0">
+            <DialogContent className="max-w-[95vw] lg:max-w-5xl w-full h-[100dvh] sm:h-auto sm:max-h-[85vh] p-0 flex flex-col overflow-hidden sm:rounded-2xl rounded-none shadow-2xl border-muted/50 gap-0">
+                <DialogHeader className="px-4 sm:px-6 py-3 border-b bg-background relative shrink-0">
                     <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-violet-500 to-purple-400" />
                     <div className="flex items-center gap-3">
                         <div className="p-2 bg-violet-500/10 text-violet-600 rounded-xl">
@@ -189,9 +189,9 @@ export function DispatchForm({ isOpen, onClose, onSubmit, isSubmitting, editReco
                     </div>
                 </DialogHeader>
 
-                <form onSubmit={handleSubmit} className="p-5 space-y-3 max-h-[85vh] overflow-y-auto">
+                <form onSubmit={handleSubmit} className="flex-1 p-4 sm:p-5 space-y-4 overflow-y-auto w-full max-w-full">
                     {/* Row 1: Order ID + Date + Invoice + Vehicle (4 cols) */}
-                    <div className="grid grid-cols-4 gap-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
                         <div className="space-y-1" ref={dropdownRef}>
                             <Label className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Order ID *</Label>
                             {orderId ? (
@@ -235,7 +235,7 @@ export function DispatchForm({ isOpen, onClose, onSubmit, isSubmitting, editReco
                     </div>
 
                     {/* Row 2: Buyer + Consignee (2 cols) */}
-                    <div className="grid grid-cols-2 gap-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <div className="space-y-1">
                             <Label className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Buyer</Label>
                             <Input value={buyer} onChange={(e) => setBuyer(e.target.value)} placeholder="Buyer name" className="h-9 text-sm rounded-lg" />
@@ -247,7 +247,7 @@ export function DispatchForm({ isOpen, onClose, onSubmit, isSubmitting, editReco
                     </div>
 
                     {/* Row 3: Driver + Phone + Email + Truck Report + Truck Released (5 cols) */}
-                    <div className="grid grid-cols-5 gap-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
                         <div className="space-y-1">
                             <Label className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Driver / No.</Label>
                             <Input value={driverNo} onChange={(e) => setDriverNo(e.target.value)} placeholder="9368455354" className="h-9 text-sm rounded-lg" />
@@ -284,37 +284,39 @@ export function DispatchForm({ isOpen, onClose, onSubmit, isSubmitting, editReco
                             </div>
                         </div>
                         {/* Header row */}
-                        <div className="flex items-center gap-1.5 text-[9px] font-bold uppercase text-muted-foreground px-5">
-                            <span className="w-14">Rolls</span>
-                            <span className="flex-1">Desc. of Goods</span>
-                            <span className="w-20">Color</span>
-                            <span className="w-20">Qty (kg)</span>
-                            <span className="w-16">Size</span>
-                            <span className="w-14">GSM</span>
-                            <span className="w-8"></span>
-                        </div>
-                        <div className="space-y-1">
-                            {rollLines.map((line, i) => (
-                                <div key={i} className="flex items-center gap-1.5">
-                                    <span className="text-[10px] text-muted-foreground w-4 shrink-0 text-right">{i + 1}.</span>
-                                    <Input value={line.noOfRolls} onChange={(e) => updateRollLine(i, 'noOfRolls', e.target.value)} placeholder="0" className="rounded-lg w-14 h-8 text-sm" />
-                                    <Input value={line.desOfGoods} onChange={(e) => updateRollLine(i, 'desOfGoods', e.target.value)} placeholder="NON WOVEN FABRIC" className="rounded-lg flex-1 h-8 text-sm" />
-                                    <Input value={line.color} onChange={(e) => updateRollLine(i, 'color', e.target.value)} placeholder="Color" className="rounded-lg w-20 h-8 text-sm" />
-                                    <Input value={line.qty} onChange={(e) => updateRollLine(i, 'qty', e.target.value)} placeholder="0.00" className="rounded-lg w-20 h-8 text-sm" />
-                                    <Input value={line.size} onChange={(e) => updateRollLine(i, 'size', e.target.value)} placeholder="Size" className="rounded-lg w-16 h-8 text-sm" />
-                                    <Input value={line.gsm} onChange={(e) => updateRollLine(i, 'gsm', e.target.value)} placeholder="GSM" className="rounded-lg w-14 h-8 text-sm" />
-                                    {rollLines.length > 1 ? (
-                                        <Button type="button" variant="ghost" size="sm" className="h-8 w-8 p-0 text-red-500 shrink-0" onClick={() => removeRollLine(i)}>
-                                            <Trash2 className="h-3 w-3" />
-                                        </Button>
-                                    ) : <span className="w-8 shrink-0" />}
-                                </div>
-                            ))}
+                        <div className="overflow-x-auto bg-muted/20 border rounded-lg pb-2">
+                            <div className="min-w-[700px] flex items-center gap-1.5 text-[9px] font-bold uppercase text-muted-foreground px-3 pt-3 pb-2 border-b">
+                                <span className="w-14 pl-5">Rolls</span>
+                                <span className="flex-1 shrink-0 min-w-[150px]">Desc. of Goods</span>
+                                <span className="w-24 shrink-0">Color</span>
+                                <span className="w-20 shrink-0">Qty (kg)</span>
+                                <span className="w-20 shrink-0">Size</span>
+                                <span className="w-16 shrink-0">GSM</span>
+                                <span className="w-8 shrink-0"></span>
+                            </div>
+                            <div className="min-w-[700px] space-y-2 p-3 pt-2">
+                                {rollLines.map((line, i) => (
+                                    <div key={i} className="flex items-center gap-1.5">
+                                        <span className="text-[10px] text-muted-foreground w-4 shrink-0 text-right">{i + 1}.</span>
+                                        <Input value={line.noOfRolls} onChange={(e) => updateRollLine(i, 'noOfRolls', e.target.value)} placeholder="0" className="rounded-lg w-14 h-8 text-sm shrink-0" />
+                                        <Input value={line.desOfGoods} onChange={(e) => updateRollLine(i, 'desOfGoods', e.target.value)} placeholder="NON WOVEN FABRIC" className="rounded-lg flex-1 min-w-[150px] shrink-0 h-8 text-sm" />
+                                        <Input value={line.color} onChange={(e) => updateRollLine(i, 'color', e.target.value)} placeholder="Color" className="rounded-lg w-24 h-8 text-sm shrink-0" />
+                                        <Input value={line.qty} onChange={(e) => updateRollLine(i, 'qty', e.target.value)} placeholder="0.00" className="rounded-lg w-20 h-8 text-sm shrink-0" />
+                                        <Input value={line.size} onChange={(e) => updateRollLine(i, 'size', e.target.value)} placeholder="Size" className="rounded-lg w-20 h-8 text-sm shrink-0" />
+                                        <Input value={line.gsm} onChange={(e) => updateRollLine(i, 'gsm', e.target.value)} placeholder="GSM" className="rounded-lg w-16 h-8 text-sm shrink-0" />
+                                        {rollLines.length > 1 ? (
+                                            <Button type="button" variant="ghost" size="sm" className="h-8 w-8 p-0 text-red-500 shrink-0" onClick={() => removeRollLine(i)}>
+                                                <Trash2 className="h-3 w-3" />
+                                            </Button>
+                                        ) : <span className="w-8 shrink-0" />}
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
 
                     {/* Actions */}
-                    <div className="flex justify-end gap-2 pt-1">
+                    <div className="sticky bottom-0 bg-background border-t pt-3 flex justify-end gap-2 shrink-0">
                         <Button type="button" variant="outline" onClick={onClose} className="rounded-xl px-5 h-9">Cancel</Button>
                         <Button type="submit" disabled={isSubmitting || !orderId.trim()} className="rounded-xl px-6 h-9 bg-violet-600 hover:bg-violet-700">
                             {isSubmitting ? <><Loader2 className="h-4 w-4 animate-spin mr-2" />{isEditMode ? 'Saving...' : 'Adding...'}</> : isEditMode ? 'Save Changes' : 'Add Dispatch'}

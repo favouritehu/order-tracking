@@ -309,9 +309,9 @@ export function UbForm({ isOpen, onClose, onSubmit, isSubmitting, editRecord, in
 
     return (
         <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
-            <DialogContent className="max-w-[95vw] lg:max-w-3xl w-full max-h-[90vh] flex flex-col p-0 overflow-hidden rounded-[20px] shadow-2xl border-muted/50 gap-0">
+            <DialogContent className="max-w-[95vw] lg:max-w-3xl w-full h-[100dvh] sm:h-auto sm:max-h-[90vh] flex flex-col p-0 overflow-hidden sm:rounded-[20px] rounded-none shadow-2xl border-muted/50 gap-0">
                 {/* Header */}
-                <DialogHeader className="px-6 py-4 border-b bg-background relative shrink-0">
+                <DialogHeader className="px-4 sm:px-6 py-3 sm:py-4 border-b bg-background relative shrink-0">
                     <div className={cn("absolute top-0 left-0 right-0 h-1 bg-gradient-to-r", isEditMode ? "from-blue-500 to-cyan-400" : "from-amber-500 to-orange-400")} />
                     <div className="flex items-center gap-3">
                         <div className={cn("p-2 rounded-xl", isEditMode ? "bg-blue-500/10 text-blue-600" : "bg-amber-500/10 text-amber-600")}>
@@ -398,7 +398,7 @@ export function UbForm({ isOpen, onClose, onSubmit, isSubmitting, editRecord, in
                             <h3 className="text-xs font-bold text-muted-foreground uppercase tracking-wider flex items-center gap-2">
                                 <Building2 className="h-3.5 w-3.5" /> Details
                             </h3>
-                            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                                 <div className="space-y-1">
                                     <Label className="text-[10px] font-semibold">Party Name *</Label>
                                     <Input value={partyName} readOnly placeholder="Select order" className="h-8 text-xs bg-muted/40 cursor-not-allowed" required />
@@ -448,8 +448,8 @@ export function UbForm({ isOpen, onClose, onSubmit, isSubmitting, editRecord, in
                                                     </Button>
                                                 )}
                                             </div>
-                                            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                                                <div className="col-span-2 space-y-0.5">
+                                            <div className="grid grid-cols-1 sm:grid-cols-4 gap-2">
+                                                <div className="sm:col-span-1 space-y-0.5">
                                                     <Label className="text-[9px] text-muted-foreground">Product Name</Label>
                                                     <Input value={product.name} onChange={(e) => updateProduct(index, 'name', e.target.value)} placeholder="e.g. White N.Fresh" className="h-7 text-[11px]" />
                                                 </div>
@@ -497,7 +497,7 @@ export function UbForm({ isOpen, onClose, onSubmit, isSubmitting, editRecord, in
                             <h3 className="text-xs font-bold text-muted-foreground uppercase tracking-wider flex items-center gap-2">
                                 <Wallet className="h-3.5 w-3.5" /> Financial Adjustments
                             </h3>
-                            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
                                 <div className="space-y-1">
                                     <Label className="text-[10px] font-semibold">Freight</Label>
                                     <Input type="number" value={fright} onChange={(e) => setFright(e.target.value)} placeholder="0" className="h-8 text-xs" />
@@ -530,7 +530,7 @@ export function UbForm({ isOpen, onClose, onSubmit, isSubmitting, editRecord, in
                                     <Input type="number" value={outstandingAmount} onChange={(e) => setOutstandingAmount(e.target.value)} placeholder="0" className="h-8 text-xs" />
                                 </div>
                             </div>
-                            <div className="grid grid-cols-2 gap-3">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                 <div className="space-y-1">
                                     <Label className="text-[10px] font-semibold">Book Balance</Label>
                                     <Input value={bookBalance} onChange={(e) => setBookBalance(e.target.value)} placeholder="0" className="h-8 text-xs" />
